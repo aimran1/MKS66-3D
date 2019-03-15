@@ -8,13 +8,13 @@ from matrix import *
   # ====================
 def add_box( points, x, y, z, width, height, depth ):
     add_point(points, x, y, z)
-    add_point(points, x, y, z+depth)
+    add_point(points, x, y, z-depth)
     add_point(points, x+width, y, z)
-    add_point(points, x+width, y, z+depth)
+    add_point(points, x+width, y, z-depth)
     add_point(points, x, y-height, z)
     add_point(points, x+width, y-height, z)
-    add_point(points, x, y-height, z+depth)
-    add_point(points, x+width, y-height, z+depth)
+    add_point(points, x, y-height, z-depth)
+    add_point(points, x+width, y-height, z-depth)
 
   # ====================
   # Generates all the points along the surface
