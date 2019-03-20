@@ -31,12 +31,16 @@ def add_box( points, x, y, z, width, height, depth ):
   # ====================
 def generate_sphere( points, cx, cy, cz, r, step ):
     m = []
-    for phi in range(0,2*math.pi,step):
-        for theta in range(0,math.pi,step):
-            x = r * Math.cos(theta) + cx
-            y = r * Math.sin(theta) * Math.cos(phi) + cy
-            z = r * Math.sin(theta) * Math.sin(phi) + cz
+    phi = 0
+    while phi < 2*math.pi:
+        theta = 0
+        while theta < math.pi:
+            x = r * math.cos(theta) + cx
+            y = r * math.sin(theta) * math.cos(phi) + cy
+            z = r * math.sin(theta) * math.sin(phi) + cz
+            theta += step * math.pi
             m.append([x,y,z])
+        phi += step * math.pi * 2
     return m
 
   # ====================
@@ -46,9 +50,9 @@ def generate_sphere( points, cx, cy, cz, r, step ):
   # necessary points
   # ====================
 def add_sphere( points, cx, cy, cz, r, step ):
-
-
-    pass
+    s = generate_sphere(points,cx,cy,cz,r,step)
+    for point in s:
+        add_edge(points,point[0],point[1],point[2],point[0],point[1],point[2])
 
 
   # ====================
